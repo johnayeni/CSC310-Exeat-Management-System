@@ -6,6 +6,7 @@
 
   $result = mysqli_query($conn, $select) or die("Could not connect");
   $row_count =  mysqli_num_rows($result);
+  $staffId = $_SESSION['staff_id'];
 
   if($row_count > 0){
     while($row = $result->fetch_assoc()){
@@ -33,8 +34,8 @@
                   <p>Intended Return Date:  <kbd>".$row['return_date']."</kbd></p>
                   </div>
                   <div class=\"panel-footer\">
-                  <button class=\"btn btn-success\" onclick=\"approve_request(".$row['id'].")\">Approve</button>
-                  <button class=\"btn btn-danger pull-right\" onclick=\"decline_request(".$row['id'].")\">Decline</button>
+                  <button class=\"btn btn-success\" onclick=\"approve_request(".$row['id'].", ".$staffId.")\">Approve</button>
+                  <button class=\"btn btn-danger pull-right\" onclick=\"decline_request(".$row['id'].", ".$staffId.")\">Decline</button>
                   </div>
                 </div>
               </div>
